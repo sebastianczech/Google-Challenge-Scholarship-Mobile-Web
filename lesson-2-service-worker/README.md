@@ -1,1 +1,1 @@
-# Introducin the Service Worker
+# Introducing the Service Worker

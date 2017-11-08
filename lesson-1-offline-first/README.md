@@ -5,8 +5,10 @@
 
 ### Instalacja i uruchomienie aplikacji:
 
-`npm install`
-`npm run serve`
+`
+npm install
+npm run serve
+`
 
 ### Dostęp do aplikacji i panelu do zarzązania:
 
