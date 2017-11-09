@@ -15,6 +15,10 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 
 - [Web Fundamentals - Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)
 
+### Books
+
+- [JSbooks](http://jsbooks.revolunet.com/)
+
 ### Videos
 
 - [Instant Loading: Building offline-first Progressive Web Apps - Google I/O 2016](https://www.youtube.com/watch?v=cmGr0RszHc8)
