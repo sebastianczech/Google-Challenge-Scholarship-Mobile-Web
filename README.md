@@ -19,6 +19,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 
 - [JSbooks](http://jsbooks.revolunet.com/)
 - [PythonBooks](http://pythonbooks.revolunet.com/)
+- [ExploginJS](http://exploringjs.com/)
 
 ### Videos
 
