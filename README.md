@@ -19,7 +19,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 
 - [Instant Loading: Building offline-first Progressive Web Apps - Google I/O 2016](https://www.youtube.com/watch?v=cmGr0RszHc8)
 
-### Przydatne komendy z lekcji
+### Useful commands
 
 * [Lesson 1: Offline first](lesson-1-offline-first/README.md)
 * [Lesson 2: Service Workers](lesson-2-service-worker/README.md)

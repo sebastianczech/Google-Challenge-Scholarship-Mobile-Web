@@ -1,18 +1,18 @@
 # The benefits of Offline first
-### Sklonowanie repozytorium:
+### Clone repository:
 
 ```
 git clone https://github.com/jakearchibald/wittr
 ```
 
-### Instalacja i uruchomienie aplikacji:
+### Install and start application:
 
 ```
 npm install
 npm run serve
 ```
 
-### Dostęp do aplikacji i panelu do zarzązania:
+### Open app and admin panel in web browser:
 
 ```
 http://localhost:8888/
