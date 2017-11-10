@@ -11,12 +11,13 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 
 - [Google Developer Challenge Scholarship: Mobile Web](https://discussions.udacity.com/c/standalone-courses/ud899-emea)
 
-### Articles
+### Articles and guides
 
 - [Web Fundamentals](https://developers.google.com/web/fundamentals/)
 - [Web Fundamentals - Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)
 - [JavaScript - The Right Way](http://jstherightway.org/)
 - [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+- [Write Software](https://www.writesoftware.org/)
 
 ### Books
 
