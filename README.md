@@ -16,7 +16,8 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [Web Fundamentals](https://developers.google.com/web/fundamentals/)
 - [Web Fundamentals - Service Workers: an Introduction](https://developers.google.com/web/fundamentals/primers/service-workers/)
 - [JavaScript - The Right Way](http://jstherightway.org/)
-- [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+- [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
+- [MDN Using Service Worker](https://developer.mozilla.org/cs/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [Write Software](https://www.writesoftware.org/)
 
 ### Books
