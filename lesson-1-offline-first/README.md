@@ -12,6 +12,12 @@ npm install
 npm run serve
 ```
 
+### Update npm
+
+```
+npm i -g npm
+```
+
 ### Open app and admin panel in web browser
 
 ```
