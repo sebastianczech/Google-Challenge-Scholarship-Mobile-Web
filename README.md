@@ -20,6 +20,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [MDN Using Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [Write Software](https://www.writesoftware.org/)
 - [Mechanizm Service Workers – używanie i nadużywanie](https://sekurak.pl/mechanizm-service-workers-uzywanie-i-naduzywanie/)
+- [Service workers explained](https://github.com/w3c/ServiceWorker/blob/master/explainer.md)
 
 ### Books
 
