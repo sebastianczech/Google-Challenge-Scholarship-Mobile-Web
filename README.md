@@ -19,6 +19,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 - [MDN Using Service Worker](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
 - [Write Software](https://www.writesoftware.org/)
+- [Mechanizm Service Workers – używanie i nadużywanie](https://sekurak.pl/mechanizm-service-workers-uzywanie-i-naduzywanie/)
 
 ### Books
 
