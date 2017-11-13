@@ -30,6 +30,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [PythonBooks](http://pythonbooks.revolunet.com/)
 - [ExploginJS](http://exploringjs.com/)
 - [Jake Archibald - The offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
+- [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
 
 ### Videos
 
