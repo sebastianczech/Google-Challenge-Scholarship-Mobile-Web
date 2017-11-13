@@ -30,7 +30,7 @@ dbPromise.then(function(db) {
 });
 ```
 
-### Creating index in idb
+### Creating index in IDB
 
 ```javascript
 var dbPromise = idb.open('test-db', 3, function(upgradeDb) {
@@ -69,5 +69,29 @@ dbPromise.then(function(db) {
   return ageIndex.getAll();
 }).then(function(people) {
   console.log('People sorted by age:', people);
+});
+```
+
+### Using cursors
+
+```javascript
+dbPromise.then(function(db) {
+  var tx = db.transaction('people');
+  var peopleStore = tx.objectStore('people');
+  var ageIndex = peopleStore.index('age');
+
+  return ageIndex.openCursor();
+}).then(function(cursor) {
+  if (!cursor) return;
+  return cursor.advance(2);
+}).then(function logPerson(cursor) {
+  if (!cursor) return;
+  console.log("Cursored at:", cursor.value.name);
+  // I could also do things like:
+  // cursor.update(newValue) to change the value, or
+  // cursor.delete() to delete this entry
+  return cursor.continue().then(logPerson);
+}).then(function() {
+  console.log('Done cursoring');
 });
 ```
