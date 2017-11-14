@@ -134,3 +134,25 @@ IndexController.prototype._onSocketMessage = function(data) {
   this._postsView.addPosts(messages);
 };
 ```
+
+### Read cached messages
+
+```javascript
+IndexController.prototype._showCachedMessages = function() {
+  var indexController = this;
+
+  return this._dbPromise.then(function(db) {
+    // if we're already showing posts, eg shift-refresh
+    // or the very first load, there's no point fetching
+    // posts from IDB
+    if (!db || indexController._postsView.showingPosts()) return;
+
+    var index = db.transaction('wittrs')
+      .objectStore('wittrs').index('by-date');
+
+    return index.getAll().then(function(messages) {
+      indexController._postsView.addPosts(messages.reverse());
+    });
+  });
+};
+```
