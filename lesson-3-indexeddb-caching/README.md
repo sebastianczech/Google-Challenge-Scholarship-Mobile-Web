@@ -95,3 +95,34 @@ dbPromise.then(function(db) {
   console.log('Done cursoring');
 });
 ```
+
+### Example of database with defined key and index
+
+```javascript
+return idb.open('wittr', 1, function(upgradeDb) {
+  var store = upgradeDb.createObjectStore('wittrs', {
+    keyPath: 'id'
+  });
+  store.createIndex('by-date', 'time');
+});
+```
+
+### Update database when the web socket sends message data
+
+```javascript
+IndexController.prototype._onSocketMessage = function(data) {
+  var messages = JSON.parse(data);
+
+  this._dbPromise.then(function(db) {
+    if (!db) return;
+
+    var tx = db.transaction('wittrs', 'readwrite');
+    var store = tx.objectStore('wittrs');
+    messages.forEach(function(message) {
+      store.put(message);
+    });
+  });
+
+  this._postsView.addPosts(messages);
+};
+```
