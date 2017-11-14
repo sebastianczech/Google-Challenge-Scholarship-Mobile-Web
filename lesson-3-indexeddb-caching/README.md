@@ -99,12 +99,20 @@ dbPromise.then(function(db) {
 ### Example of database with defined key and index
 
 ```javascript
-return idb.open('wittr', 1, function(upgradeDb) {
-  var store = upgradeDb.createObjectStore('wittrs', {
-    keyPath: 'id'
+function openDatabase() {
+  // If the browser doesn't support service worker,
+  // we don't care about having a database
+  if (!navigator.serviceWorker) {
+    return Promise.resolve();
+  }
+
+  return idb.open('wittr', 1, function(upgradeDb) {
+    var store = upgradeDb.createObjectStore('wittrs', {
+      keyPath: 'id'
+    });
+    store.createIndex('by-date', 'time');
   });
-  store.createIndex('by-date', 'time');
-});
+}
 ```
 
 ### Update database when the web socket sends message data
