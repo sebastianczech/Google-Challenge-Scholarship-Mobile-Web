@@ -156,3 +156,81 @@ IndexController.prototype._showCachedMessages = function() {
   });
 };
 ```
+
+### Clean up IndexedDB
+
+```javascript
+IndexController.prototype._onSocketMessage = function(data) {
+  var messages = JSON.parse(data);
+
+  this._dbPromise.then(function(db) {
+    if (!db) return;
+
+    var tx = db.transaction('wittrs', 'readwrite');
+    var store = tx.objectStore('wittrs');
+    messages.forEach(function(message) {
+      store.put(message);
+    });
+
+    // limit store to 30 items
+    store.index('by-date').openCursor(null, "prev").then(function(cursor) {
+      return cursor.advance(30);
+    }).then(function deleteRest(cursor) {
+      if (!cursor) return;
+      cursor.delete();
+      return cursor.continue().then(deleteRest);
+    });
+  });
+
+  this._postsView.addPosts(messages);
+};
+```
+
+### Get image from cache - if there is no image, fetch it from networkResponse
+
+```javascript
+function servePhoto(request) {
+  var storageUrl = request.url.replace(/-\d+px\.jpg$/, '');
+
+  return caches.open(contentImgsCache).then(function(cache) {
+    return cache.match(storageUrl).then(function(response) {
+      if (response) return response;
+
+      return fetch(request).then(function(networkResponse) {
+        cache.put(storageUrl, networkResponse.clone());
+        return networkResponse;
+      });
+    });
+  });
+}
+```
+
+### Clean image cached
+
+```javascript
+IndexController.prototype._cleanImageCache = function() {
+  return this._dbPromise.then(function(db) {
+    if (!db) return;
+
+    var imagesNeeded = [];
+
+    var tx = db.transaction('wittrs');
+    return tx.objectStore('wittrs').getAll().then(function(messages) {
+      messages.forEach(function(message) {
+        if (message.photo) {
+          imagesNeeded.push(message.photo);
+        }
+      });
+
+      return caches.open('wittr-content-imgs');
+    }).then(function(cache) {
+      return cache.keys().then(function(requests) {
+        requests.forEach(function(request) {
+          var url = new URL(request.url);
+          if (!imagesNeeded.includes(url.pathname)) cache.delete(request);
+        });
+      });
+    });
+  });
+};
+```
