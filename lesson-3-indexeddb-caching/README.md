@@ -234,3 +234,22 @@ IndexController.prototype._cleanImageCache = function() {
   });
 };
 ```
+
+### Get avatar from the caches
+
+```javascript
+function serveAvatar(request) {
+  var storageUrl = request.url.replace(/-\dx\.jpg$/, '');
+
+  return caches.open(contentImgsCache).then(function(cache) {
+    return cache.match(storageUrl).then(function(response) {
+      var networkFetch = fetch(request).then(function(networkResponse) {
+        cache.put(storageUrl, networkResponse.clone());
+        return networkResponse;
+      });
+
+      return response || networkFetch;
+    });
+  });
+}
+```
