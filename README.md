@@ -23,6 +23,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [Service workers explained](https://github.com/w3c/ServiceWorker/blob/master/explainer.md)
 - [Await and Async Explained with Diagrams and Examples](http://nikgrozev.com/2017/10/01/async-await/)
 - [JavaScript - from callbacks to async/await](https://medium.freecodecamp.org/javascript-from-callbacks-to-async-await-1cc090ddad99)
+- [The bitsofcode Progressive Web App](https://github.com/ireade/app.bitsofco.de)
 
 ### Books
 
