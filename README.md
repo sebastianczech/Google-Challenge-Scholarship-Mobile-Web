@@ -32,6 +32,9 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 - [ExploginJS](http://exploringjs.com/)
 - [Jake Archibald - The offline cookbook](https://jakearchibald.com/2014/offline-cookbook/)
 - [You Don't Know JS](https://github.com/getify/You-Dont-Know-JS)
+- [Progressive Web Apps ILT - Concepts](https://www.gitbook.com/book/google-developer-training/progressive-web-apps-ilt-concepts/details)
+- [Progressive Web Apps ILT - Codelabs](https://www.gitbook.com/book/google-developer-training/progressive-web-apps-ilt-codelabs/details)
+- [Google Developer Training](https://www.gitbook.com/@google-developer-training)
 
 ### Videos
 
