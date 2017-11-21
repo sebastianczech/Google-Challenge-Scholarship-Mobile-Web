@@ -84,17 +84,17 @@ The value of the ``this`` keyword is based completely on how its function (or me
 const mySundae = new Sundae('Chocolate', ['Sprinkles', 'Hot Fudge']);
 ```
 The value of ``this`` inside the Sundae constructor function is a new object
-1. **A specified object**
+2. **A specified object**
 ```JavaScript
 const result = obj1.printName.call(obj2);
 ```
 The value of ``this`` inside ``printName()`` will refer to ``obj2`` since the first parameter of ``call()`` is to explicitly set what ``this`` refers to.
-1. **A context object**
+3. **A context object**
 ```javascript
 data.teleport();
 ```
 The value of ``this`` inside ``teleport()`` will refer to data.
-1. **The global object or undefined**
+4. **The global object or undefined**
 ```javascript
 teleport();
 ```
