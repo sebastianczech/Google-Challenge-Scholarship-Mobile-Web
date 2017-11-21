@@ -102,4 +102,4 @@ The value of ``this`` inside ``teleport()`` is either the global object or, if i
 
 ###### Arrow functions and "this"
 
-With regular functions, the value of this is set based on how the function is called. With arrow functions, the value of this is based on the function's surrounding context. In other words, the value of this inside an arrow function is the same as the value of this outside the function.
+With regular functions, the value of ``this`` is set based on how the function is called. With arrow functions, the value of ``this`` is based on the function's surrounding context. In other words, the value of ``this`` inside an arrow function is the same as the value of this outside the function.
