@@ -106,3 +106,190 @@ The value of ``this`` inside ``teleport()`` is either the global object or, if i
 ###### Arrow functions and "this"
 
 With regular functions, the value of ``this`` is set based on how the function is called. With arrow functions, the value of ``this`` is based on the function's surrounding context. In other words, the value of ``this`` inside an arrow function is the same as the value of this outside the function.
+
+### Default function parameters
+
+To create a default parameter, you add an equal sign (``=``) and then whatever you want the parameter to default to if an argument is not provided.
+
+```javascript
+function greet(name = 'Student', greeting = 'Welcome') {
+  return `${greeting} ${name}!`;
+}
+
+greet(); // Welcome Student!
+greet('James'); // Welcome James!
+greet('Richard', 'Howdy'); // Howdy Richard!
+```
+
+###### Defaults and destructuring arrays
+
+```JavaScript
+function createGrid([width = 5, height = 5]) {
+  return `Generates a ${width} x ${height} grid`;
+}
+
+createGrid([]); // Generates a 5 x 5 grid
+createGrid([2]); // Generates a 2 x 5 grid
+createGrid([2, 3]); // Generates a 2 x 3 grid
+createGrid([undefined, 3]); // Generates a 5 x 3 grid
+
+createGrid(); // throws an error
+
+function createGrid2([width = 5, height = 5] = []) {
+  return `Generating a grid of ${width} by ${height}`;
+}
+
+createGrid2(); // Generates a 5 x 5 grid
+```
+
+###### Defaults and destructuring objects
+
+```javascript
+function createSundae({scoops = 1, toppings = ['Hot Fudge']}) {
+  const scoopText = scoops === 1 ? 'scoop' : 'scoops';
+  return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(' and ')} toppings.`;
+}
+
+createSundae({}); // Your sundae has 1 scoop with Hot Fudge toppings.
+createSundae({scoops: 2}); // Your sundae has 2 scoops with Hot Fudge toppings.
+createSundae({scoops: 2, toppings: ['Sprinkles']}); // Your sundae has 2 scoops with Sprinkles toppings.
+createSundae({toppings: ['Cookie Dough']}); // Your sundae has 1 scoop with Cookie Dough toppings.
+
+createSundae(); // throws an error
+
+function createSundae2({scoops = 1, toppings = ['Hot Fudge']} = {}) {
+  const scoopText = scoops === 1 ? 'scoop' : 'scoops';
+  return `Your sundae has ${scoops} ${scoopText} with ${toppings.join(' and ')} toppings.`;
+}
+
+createSundae2(); // Your sundae has 1 scoop with Hot Fudge toppings.
+```
+
+### JavaScript Classes
+
+ES6 classes are just a mirage and hide the fact that prototypal inheritance is actually going on under the hood.
+
+**Class is just a function**. There isn't anything special about class. There isn't even a new type added to JavaScript. Class is a mirage over prototypal inheritance.
+
+###### ES5 "Class" Recap
+
+```JavaScript
+function Plane(numEngines) {
+  this.numEngines = numEngines;
+  this.enginesActive = false;
+}
+
+// methods "inherited" by all instances
+Plane.prototype.startEngines = function () {
+  console.log('starting engines...');
+  this.enginesActive = true;
+};
+
+const richardsPlane = new Plane(1);
+richardsPlane.startEngines();
+
+const jamesPlane = new Plane(4);
+jamesPlane.startEngines();
+```
+
+###### ES6 Classes
+
+```javascript
+class Plane {
+  constructor(numEngines) {
+    this.numEngines = numEngines;
+    this.enginesActive = false;
+  }
+
+  startEngines() {
+    console.log('starting engines…');
+    this.enginesActive = true;
+  }
+}
+
+typeof Plane; // function
+
+const richardsPlane = new Plane(1);
+richardsPlane.startEngines();
+
+const jamesPlane = new Plane(4);
+jamesPlane.startEngines();
+```
+
+There aren't any commas between the method definitions in the Class. Commas are not used to separate properties or methods in a Class. If you add them, you'll get a SyntaxError of unexpected token.
+
+When creating a new instance of a JavaScript class, the new keyword must be used.
+
+### Static methods
+
+```javascript
+class Plane {
+  constructor(numEngines) {
+    this.numEngines = numEngines;
+    this.enginesActive = false;
+  }
+
+  static badWeather(planes) {
+    for (plane of planes) {
+      plane.enginesActive = false;
+    }
+  }
+
+  startEngines() {
+    console.log('starting engines…');
+    this.enginesActive = true;
+  }
+}
+
+Plane.badWeather([plane1, plane2, plane3]); // badWeather() is a method that's accessed directly on the Plane class
+```
+
+### Benefits of classes
+
+1. Less setup
+2. Clearly defined constructor function
+3. Everything's contained
+
+### Subclasses with ES6
+
+```javascript
+class Tree {
+  constructor(size = '10', leaves = {spring: 'green', summer: 'green', fall: 'orange', winter: null}) {
+    this.size = size;
+    this.leaves = leaves;
+    this.leafColor = null;
+  }
+
+  changeSeason(season) {
+    this.leafColor = this.leaves[season];
+    if (season === 'spring') {
+      this.size += 1;
+    }
+  }
+}
+
+class Maple extends Tree {
+  constructor(syrupQty = 15, size, leaves) {
+    super(size, leaves);
+    this.syrupQty = syrupQty;
+  }
+
+  changeSeason(season) {
+      super.changeSeason(season);
+      if (season === 'spring') {
+        this.syrupQty += 1;
+      }
+    }
+
+    gatherSyrup() {
+      this.syrupQty -= 3;
+    }
+  }
+
+const myMaple = new Maple(15, 5);
+myMaple.changeSeason('fall');
+myMaple.gatherSyrup();
+myMaple.changeSeason('spring');
+```
+
+``Super`` must be called before ``this``. In a subclass constructor function, before this can be used, a call to the super class must be made.
