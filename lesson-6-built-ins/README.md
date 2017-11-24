@@ -56,12 +56,6 @@ The iterator method, which is available via the constant ``[Symbol.iterator]``, 
 
 The iterator protocol is used to define a standard way that an object produces a sequence of values. What that really means is you now have a process for defining how an object will iterate. This is done through implementing the ``.next()`` method.
 
-The ``.next()`` method is a zero arguments function that returns an object with two properties:
-* ``value`` : the data representing the next value in the sequence of values within the object
-* ``done`` : a boolean representing if the iterator is done going through the sequence of values:
-   * If done is true, then the iterator has reached the end of its sequence of values.
-   * If done is false, then the iterator is able to produce another value in its sequence of values.
-
 ```javascript
 const digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const arrayIterator = digits[Symbol.iterator]();
@@ -74,3 +68,36 @@ console.log(arrayIterator.next());
 // Object {value: 1, done: false}
 // Object {value: 2, done: false}
 ```   
+
+The ``.next()`` method is a zero arguments function that returns an object with two properties:
+* ``value`` : the data representing the next value in the sequence of values within the object
+* ``done`` : a boolean representing if the iterator is done going through the sequence of values:
+   * If done is true, then the iterator has reached the end of its sequence of values.
+   * If done is false, then the iterator is able to produce another value in its sequence of values.
+
+```javascript
+const james = {
+    name: 'James',
+    height: `5'10"`,
+    weight: 185,
+    [Symbol.iterator]: function () {
+        let keys = Object.keys(this);
+        let index = 0;
+        return {
+           next: () => {
+               return {
+                    key: keys[index],
+                    value: this[keys[index]],
+                    done: ++index >= keys.length
+               }
+           }
+        };           
+    }
+};
+
+const iterator = james[Symbol.iterator]();
+
+console.log(iterator.next().value); // 'James'
+console.log(iterator.next().value); // `5'10`
+console.log(iterator.next().value); // 185
+```
