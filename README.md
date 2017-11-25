@@ -14,6 +14,7 @@ Materials connected with Google Challenge Scholarship - Mobile Web
 ### Repositories
 
 - [Wittr](https://github.com/jakearchibald/wittr)
+- [ES6](https://github.com/udacity/course-es6)
 
 ### Articles and guides
 
